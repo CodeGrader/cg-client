@@ -1,10 +1,47 @@
-@import '~normalize.css/normalize';
-@import 'definitions';
+@import 'defaults';
 
-body {
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  background-color: $PAGE_BACKGROUND_COLOR;
-  color: $TEXT_REGULAR_COLOR;
+// desktop (laptop)
+@media only screen and (min-width: 1024px) {
+  $device: 'desktop';
+  header {
+    #logo {
+      width: adjust_aside_width($device);
+    }
+  }
+
+  aside {
+    @include show();
+    width: adjust_aside_width($device);
+  }
+}
+
+// tablets
+@media only screen and (max-width: 1024px) {
+  $device: 'tablets';
+  header {
+    #logo {
+      width: adjust_aside_width($device);
+    }
+  }
+
+  aside {
+    @include show();
+    width: adjust_aside_width($device);
+  }
+}
+
+// smart phones
+@media only screen and (max-width: 768px) {
+  $device: 'phone';
+  header {
+    #logo {
+      width: $HEADER_HEIGHT_DEFAULT;
+      border-right: none;
+    }
+  }
+
+  aside {
+    @include hide();
+    width: 100%;
+  }
 }
