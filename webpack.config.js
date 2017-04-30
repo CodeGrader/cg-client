@@ -34,10 +34,11 @@ const config = {
       },
     }, {
       test: /\.scss$/,
-      loader: ExtractTextPlugin.extract('style', 'css!sass'),
+      loader: ExtractTextPlugin.extract('style', 'css!postcss!sass'),
       exclude: /(node_modules|bower_components)/,
     }],
   },
+  postcss: () => [require('precss'), require('autoprefixer')],
   plugins: [
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV } }),
     new ExtractTextPlugin('style.css'),

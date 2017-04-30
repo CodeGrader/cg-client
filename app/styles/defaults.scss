@@ -1,0 +1,72 @@
+@import '~normalize.css/normalize';
+@import 'definitions';
+
+@mixin show() {
+  display: block;
+  visibility: visible;
+}
+
+@mixin hide() {
+  display: none;
+  visibility: hidden;
+}
+
+@function adjust_aside_width($device) {
+  @if $device == 'desktop' {
+    @return ceil($DESKTOP_SCREEN_WIDTH_DEFAULT * 0.25);
+  } @else if $device == 'tablet' {
+    @return ceil($TABLET_SCREEN_WIDTH_PORTRAIT * 0.3);
+  } @else if $device == 'phone'{
+    @return ceil($PHONE_SCREEN_WIDTH_PORTRAIT);
+  } @else {
+    @return ceil($DESKTOP_SCREEN_WIDTH_DEFAULT * 0.2);
+  }
+}
+
+body {
+  font-family: $FONT_FAMILY_DEFAULT;
+  font-weight: $FONT_WEIGHT_NORMAL;
+  font-size: $FONT_SIZE_DEFAULT;
+  font-style: normal;
+  background-color: $PAGE_BACKGROUND_COLOR;
+  color: $TEXT_REGULAR_COLOR;
+}
+
+header, aside {
+  background-color: $MODULE_BACKGROUND_COLOR;
+  border: solid $MODULE_SHADOW_COLOR 0;
+  position: fixed;
+  left: 0;
+}
+
+header {
+  width: 100%;
+  height: $HEADER_HEIGHT_DEFAULT;
+  top: 0;
+  border-bottom-width: $BORDER_WIDTH;
+  #logo {
+    display: table;
+    position: absolute;
+    width: adjust_aside_width('default');
+    height: inherit;
+    font-weight: $FONT_WEIGHT_BOLD;
+    text-transform: uppercase;
+    text-align: center;
+    border-right: solid $MODULE_SHADOW_COLOR $BORDER_WIDTH;
+    * {
+      height: inherit;
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+}
+
+aside {
+  top: $HEADER_HEIGHT_DEFAULT + $BORDER_WIDTH;
+  font-size: 105%;
+  width: adjust_aside_width('default');
+  height: 100%;
+  border-right-width: $BORDER_WIDTH;
+}
+
+section {}
