@@ -3,6 +3,8 @@ import Responsive from 'react-responsive-decorator';
 
 import Logo from './Logo';
 
+const SCREEN_SIZE_THRESHOLD = 768;
+
 @Responsive
 class Layout extends React.Component {
   constructor() {
@@ -11,8 +13,9 @@ class Layout extends React.Component {
   }
 
   componentDidMount() {
-    this.props.media({ minWidth: 768 }, () => this.setState({ isMobile: false }));
-    this.props.media({ maxWidth: 768 }, () => this.setState({ isMobile: true }));
+    const { media } = this.props;
+    media({ minWidth: SCREEN_SIZE_THRESHOLD }, () => this.setState({ isMobile: false }));
+    media({ maxWidth: SCREEN_SIZE_THRESHOLD }, () => this.setState({ isMobile: true }));
   }
 
   render() {
@@ -20,7 +23,7 @@ class Layout extends React.Component {
     return (
       <div>
         <header>
-          <Logo isMobile={isMobile} />
+          <Logo {...{ isMobile }} />
         </header>
         <aside>
           <nav></nav>

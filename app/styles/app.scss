@@ -17,7 +17,7 @@
 
 // tablets
 @media only screen and (max-width: 1024px) {
-  $device: 'tablets';
+  $device: 'tablet';
   header {
     #logo {
       width: adjust_aside_width($device);
