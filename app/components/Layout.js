@@ -1,19 +1,38 @@
 import React from 'react';
+import Responsive from 'react-responsive-decorator';
 
-import ToolBox from './ToolBox';
+import Logo from './Logo';
 
-const Layout = () => (
-    <div>
-      <header></header>
-      <aside>
-        <ToolBox displayName="My Companies" name="companies"/>
-        <ToolBox displayName="Preferences" name="preferences" />
-        <ToolBox displayName="Module Manager" name="modules" />
-      </aside>
-      <section>
+const SCREEN_SIZE_THRESHOLD = 768;
 
-      </section>
-    </div>
-  );
+@Responsive
+class Layout extends React.Component {
+  constructor() {
+    super();
+    this.state = { isMobile: false };
+  }
+
+  componentDidMount() {
+    const { media } = this.props;
+    media({ minWidth: SCREEN_SIZE_THRESHOLD }, () => this.setState({ isMobile: false }));
+    media({ maxWidth: SCREEN_SIZE_THRESHOLD }, () => this.setState({ isMobile: true }));
+  }
+
+  render() {
+    const { isMobile } = this.state;
+    return (
+      <div>
+        <header>
+          <Logo {...{ isMobile }} />
+        </header>
+        <aside>
+          <nav></nav>
+        </aside>
+        <section>
+        </section>
+      </div>
+    );
+  }
+}
 
 export default Layout;

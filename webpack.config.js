@@ -1,10 +1,15 @@
 const webpack = require('webpack');
+const precss = require('precss');
+const autoprefixer = require('autoprefixer');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-const NODE_ENV = JSON.stringify(((env) => {
-  if (env && env !== 'development') {
+const { DefinePlugin, HotModuleReplacementPlugin, optimize } = webpack;
+const { OccurrenceOrderPlugin, DedupePlugin, UglifyJsPlugin, LimitChunkCountPlugin, MinChunkSizePlugin } = optimize;
+
+const NODE_ENV = JSON.stringify(((env='development') => {
+  if (env !== 'development') {
     return 'production';
   }
   return 'development';
@@ -34,12 +39,13 @@ const config = {
       },
     }, {
       test: /\.scss$/,
-      loader: ExtractTextPlugin.extract('style', 'css!sass'),
+      loader: ExtractTextPlugin.extract('style', 'css!postcss!sass'),
       exclude: /(node_modules|bower_components)/,
     }],
   },
+  postcss: () => [precss, autoprefixer],
   plugins: [
-    new webpack.DefinePlugin({ 'process.env': { NODE_ENV } }),
+    new DefinePlugin({ 'process.env': { NODE_ENV } }),
     new ExtractTextPlugin('style.css'),
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: 'vendor',
@@ -59,15 +65,15 @@ if (process.argv.includes('--analyze')) {
 
 if (NODE_ENV !== '"development"') {
   config.plugins.push(
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin({ IN_BROWSER: true }),
-    new webpack.optimize.UglifyJsPlugin({
+    new OccurrenceOrderPlugin(),
+    new DedupePlugin({ IN_BROWSER: true }),
+    new UglifyJsPlugin({
       minimize: true,
       compress: { warnings: false, drop_console: true },
       output: { comments: false },
     }),
-    new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 15 }),
-    new webpack.optimize.MinChunkSizePlugin({ minChunkSize: 10000 }),
+    new LimitChunkCountPlugin({ maxChunks: 15 }),
+    new MinChunkSizePlugin({ minChunkSize: 10000 }),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/,
       cssProcessorOptions: { discardComments: { removeAll: true } },
@@ -76,7 +82,7 @@ if (NODE_ENV !== '"development"') {
   config.debug = true;
   config.devtool = 'eval-cheap-module-source-map';
   config.entry.main.unshift('webpack-hot-middleware/client');
-  config.plugins.push(new webpack.HotModuleReplacementPlugin());
+  config.plugins.push(new HotModuleReplacementPlugin());
 }
 
 module.exports = config;

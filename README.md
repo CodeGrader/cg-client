@@ -15,7 +15,7 @@ Client-side application for Job Compare.
 ## Setup
 1. Make sure you have access to UNIX/POSIX commands (i.e. Windows OS may need [cygwin](https://www.cygwin.com/) or a VM)
 2. Download and/or install [Node.js](https://nodejs.org/en/) (v7.8.0). If you have previously installed Node.js, you may use [nvm](https://github.com/creationix/nvm) to change your node version locally.
-3. Clone this repo: `git clone https://github.com/JobCompare/jc-client.git`
+3. Clone this repo: `git clone https://github.com/JobCompare/jc-ui.git`
 4. Install dependencies: `npm install`
 5. To start this application, `npm start`. By default, it should use `http://localhost:3000` for local development.
 
@@ -80,6 +80,7 @@ For production stage, the code needs to be compiled prior to runtime by typing `
 * [Request](https://github.com/request/request) - simple HTTP request tool
 * [Immutable](https://facebook.github.io/immutable-js/) - collection of immutable data structures
 * [Normalize.css](https://necolas.github.io/normalize.css/) - cross-browser CSS resets
+* [Autoprefixer](https://github.com/postcss/autoprefixer) - automatically puts browser prefixes on CSS rules
 
 ## Git
 JobCompare application will have some specific guidelines for using git.
@@ -100,6 +101,9 @@ JobCompare application will have some specific guidelines for using git.
 * Handle merge conflicts, push to feature branch.
 ### Recommended Git Tools
 * [SourceTree](https://www.sourcetreeapp.com/) or [GitX](http://gitx.frim.nl/)
+
+## Useful Links
+* https://caniuse.com/ - website use to check browser compatibility of CSS and Javascript features
 
 ## UI Guideline
 JobCompare's client-side application will strictly follow color palettes, fonts, and icon mentioned in following screenshot:
