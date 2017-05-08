@@ -103,7 +103,7 @@ JobCompare application will have some specific guidelines for using git.
 * [SourceTree](https://www.sourcetreeapp.com/) or [GitX](http://gitx.frim.nl/)
 
 ## Useful Links
-* https://caniuse.com/
+* https://caniuse.com/ - website use to check browser compatibility of CSS and Javascript features
 
 ## UI Guideline
 JobCompare's client-side application will strictly follow color palettes, fonts, and icon mentioned in following screenshot:
