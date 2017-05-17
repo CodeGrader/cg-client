@@ -8,6 +8,11 @@ then
 fi
 
 node_modules/.bin/webpack --progress
+return_code=$?
+if [ ${return_code} != 0 ]
+then
+  exit ${return_code}
+fi
 
 for argument in "${ARGUMENTS[@]}"
 do
@@ -16,5 +21,11 @@ do
     npm install
   elif [ "$argument" != "compile" ]; then
     npm run "$argument"
+  fi
+
+  return_code=$?
+  if [ ${return_code} != 0 ]
+  then
+    exit ${return_code}
   fi
 done

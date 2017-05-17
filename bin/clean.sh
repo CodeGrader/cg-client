@@ -24,4 +24,10 @@ do
   elif [ "$argument" != "clean" ]; then
     npm run "$argument"
   fi
+
+  return_code=$?
+  if [ ${return_code} != 0 ]
+  then
+    exit ${return_code}
+  fi
 done
