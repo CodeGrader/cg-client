@@ -34,10 +34,6 @@ class TypeChecker {
   static isUndefined(value) {
     return typeof value === 'undefined';
   }
-
-  static isNull(value) {
-    return value === null;
-  }
 }
 
 export default TypeChecker;

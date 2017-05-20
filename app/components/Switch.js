@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TypeChecker from '../../../utils/TypeChecker';
+import TypeChecker from '../../utils/TypeChecker';
 
 const { isString, isInteger } = TypeChecker;
 

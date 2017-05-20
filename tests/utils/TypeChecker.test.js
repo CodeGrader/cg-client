@@ -369,38 +369,4 @@ describe('TypeChecker', () => {
       expect(TypeChecker.isUndefined(null)).toBe(false);
     });
   });
-
-  describe('#isNull', () => {
-    it('should return true for null', () => {
-      expect(TypeChecker.isNull(null)).toBe(true);
-    });
-
-    it('should return false for number', () => {
-      expect(TypeChecker.isNull(0)).toBe(false);
-    });
-
-    it('should return false for string', () => {
-      expect(TypeChecker.isNull('')).toBe(false);
-    });
-
-    it('should return false for boolean', () => {
-      expect(TypeChecker.isNull(true)).toBe(false);
-    });
-
-    it('should return false for object', () => {
-      expect(TypeChecker.isNull({})).toBe(false);
-    });
-
-    it('should return false for array', () => {
-      expect(TypeChecker.isNull([])).toBe(false);
-    });
-
-    it('should return false for function', () => {
-      expect(TypeChecker.isNull(() => {})).toBe(false);
-    });
-
-    it('should return false for undefined', () => {
-      expect(TypeChecker.isNull(undefined)).toBe(false);
-    });
-  });
 });

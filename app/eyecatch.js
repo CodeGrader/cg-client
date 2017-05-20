@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import Switch from './components/micro/Switch';
+import Switch from './components/Switch';
 
 import './styles/app.scss';
 

@@ -16,7 +16,7 @@ then
   then
     exit ${return_code}
   else
-    echo "No Critical Lint Error Found"
+    echo "> No Critical Lint Error Found"
   fi
 fi
 
