@@ -2,7 +2,7 @@ import React from 'react';
 
 import TypeChecker from '../../utils/TypeChecker';
 
-const { isString, isInteger } = TypeChecker;
+const { isString, isInteger, isUndefined, isObject } = TypeChecker;
 
 /*
  * Sanity Checklist:
@@ -24,15 +24,15 @@ const Switch = (props) => {
     className: `ui-switch ${props.className}`.trim(),
   };
 
-  if (attributes.checked !== undefined) {
-    if (attributes.defaultChecked === undefined) {
+  if (!isUndefined(attributes.checked)) {
+    if (isUndefined(attributes.defaultChecked)) {
       attributes.defaultChecked = attributes.checked;
     }
     delete attributes.checked;
   }
 
-  if (attributes.size !== undefined) {
-    attributes.style = attributes.style || {};
+  if (!isUndefined(attributes.size)) {
+    attributes.style = isObject(attributes.style) ? attributes.style || {} : {};
     attributes.style.fontSize = parseInt(attributes.size);
     if (!isInteger(attributes.style.fontSize)) {
       delete attributes.style.fontSize;
