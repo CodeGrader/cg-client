@@ -17,11 +17,11 @@ const NODE_ENV = JSON.stringify(((env='development') => {
 
 const config = {
   entry: {
-    main: [`${__dirname}/app/main.js`],
+    script: [`${__dirname}/app/main.js`],
   },
   output: {
     path: `${__dirname}/static/bundle/`,
-    filename: 'script.js',
+    filename: '[name].js',
     publicPath: '/bundle/',
   },
   module: {
@@ -29,14 +29,6 @@ const config = {
       test: /\.js$/,
       loader: 'babel',
       exclude: /(node_modules|bower_components)/,
-      query: {
-        presets: ['react', 'es2015', 'stage-3'],
-        plugins: [
-          'transform-decorators-legacy',
-          'transform-react-inline-elements',
-          'transform-react-constant-elements',
-        ],
-      },
     }, {
       test: /\.scss$/,
       loader: ExtractTextPlugin.extract('style', 'css!postcss!sass'),
@@ -81,7 +73,8 @@ if (NODE_ENV !== '"development"') {
 } else {
   config.debug = true;
   config.devtool = 'eval-cheap-module-source-map';
-  config.entry.main.unshift('webpack-hot-middleware/client');
+  config.entry.script.unshift('webpack-hot-middleware/client');
+  config.entry.eyecatch = ['webpack-hot-middleware/client', `${__dirname}/app/eyecatch.js`];
   config.plugins.push(new HotModuleReplacementPlugin());
 }
 

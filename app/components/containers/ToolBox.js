@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Action from '../../utils/wrappers/redux/Action';
-import * as ActionType from '../../utils/definitions/action_types/toolbox';
+import Action from '../../../utils/wrappers/redux/Action';
+import * as ActionType from '../../../utils/definitions/action_types/toolbox';
 
 const { TOGGLE_TOOL } = ActionType;
 

@@ -3,28 +3,6 @@
 
 $device: 'default';
 
-@mixin show() {
-  display: block;
-  visibility: visible;
-}
-
-@mixin hide() {
-  display: none;
-  visibility: hidden;
-}
-
-@function adjust_aside_width($device) {
-  @if $device == 'desktop' {
-    @return ceil($DESKTOP_SCREEN_WIDTH_DEFAULT * 0.25);
-  } @else if $device == 'tablet' {
-    @return ceil($TABLET_SCREEN_WIDTH_PORTRAIT * 0.3);
-  } @else if $device == 'phone'{
-    @return ceil($PHONE_SCREEN_WIDTH_PORTRAIT);
-  } @else {
-    @return ceil($DESKTOP_SCREEN_WIDTH_DEFAULT * 0.2);
-  }
-}
-
 body {
   font-family: $FONT_FAMILY_DEFAULT;
   font-weight: $FONT_WEIGHT_NORMAL;
@@ -72,3 +50,39 @@ aside {
 }
 
 section {}
+
+input[type=checkbox].ui-switch {
+  @include form_element_reset();
+  position: relative;
+  width: 2em;
+  height: 1em;
+  background: $GREY_1;
+  cursor: pointer;
+  border-radius: 0.5em;
+}
+
+input[type=checkbox].ui-switch:before {
+  content: '';
+  position: absolute;
+  width: calc(1em - (1em / 20) * 2); // TODO: might be an issue in IE 11
+  height: calc(1em - (1em / 20) * 2);
+  background: $WHITE_0;
+  left: calc(1em / 20);
+  top: calc(1em / 20);
+  transition: all 150ms ease-out;
+  border-radius: 50%;
+  margin: inherit;
+}
+
+input[type=checkbox].ui-switch:checked:before {
+  left: calc(1em + (1em / 20));
+}
+
+input[type=checkbox].ui-switch:checked {
+  background: $BLUE;
+}
+
+input[type=checkbox].ui-switch:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

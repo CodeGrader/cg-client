@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 
 import store from './store';
 
-import Layout from './components/Layout';
-import HTTPError from './components/HTTPError';
+import Layout from './components/containers/Layout';
+import HTTPError from './components/containers/HTTPError';
 
 import './styles/app.scss';
 

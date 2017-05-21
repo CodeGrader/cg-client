@@ -76,6 +76,12 @@ app.use('/api/*', async (req, res) => {
   }
 });
 
+if (NODE_ENV === 'development') {
+  app.get('/eyecatch', (req, res) => {
+    res.sendFile(`${__dirname}/static/eyecatch.html`);
+  });
+}
+
 app.get('*', (req, res) => {
   res.sendFile(`${__dirname}/static/index.html`);
 });

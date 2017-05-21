@@ -73,3 +73,37 @@ $PHONE_SCREEN_WIDTH_PORTRAIT: 320px;
 /* sizes */
 $HEADER_HEIGHT_DEFAULT: 65px;
 $BORDER_WIDTH: 2px;
+
+/* mixins */
+@mixin show() {
+  display: block;
+  visibility: visible;
+}
+
+@mixin hide() {
+  display: none;
+  visibility: hidden;
+}
+
+@mixin form_element_reset() {
+  appearance: none;
+  outline: 0;
+  display: inline-block;
+}
+
+/* functions */
+@function adjust_aside_width($device) {
+  @if $device == 'desktop' {
+    @return ceil($DESKTOP_SCREEN_WIDTH_DEFAULT * 0.25);
+  } @else if $device == 'tablet' {
+    @return ceil($TABLET_SCREEN_WIDTH_PORTRAIT * 0.3);
+  } @else if $device == 'phone'{
+    @return ceil($PHONE_SCREEN_WIDTH_PORTRAIT);
+  } @else {
+    @return ceil($DESKTOP_SCREEN_WIDTH_DEFAULT * 0.2);
+  }
+}
+
+@function ui_switch_padding() {
+  @return calc(1em / 20);
+}

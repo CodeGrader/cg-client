@@ -39,6 +39,12 @@ do
   if [ "$argument" != "install" ]
   then
     npm run "$argument"
+
+    return_code=$?
+    if [ ${return_code} != 0 ]
+    then
+      exit ${return_code}
+    fi
   fi
 done
 

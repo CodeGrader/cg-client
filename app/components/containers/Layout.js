@@ -1,7 +1,7 @@
 import React from 'react';
 import Responsive from 'react-responsive-decorator';
 
-import Logo from './Logo';
+import Logo from '../Logo';
 
 const SCREEN_SIZE_THRESHOLD = 768;
 
