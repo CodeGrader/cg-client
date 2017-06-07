@@ -49,7 +49,127 @@ aside {
   border-right-width: $BORDER_WIDTH;
 }
 
-section {}
+#main-container {
+  margin-top: $HEADER_HEIGHT_DEFAULT + $BORDER_WIDTH;
+  margin-left: adjust_aside_width($device) + $BORDER_WIDTH;
+  padding-top: 30px;
+}
+
+div.overlay {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+div.overlay-show {
+  display: block;
+}
+
+div.overlay-hide {
+  display: none;
+}
+
+.overlay-content {
+  z-index: 2;
+  position: relative;
+}
+
+section.company-search-container {
+  width: 80%;
+  max-width: 700px;
+  margin: auto;
+  height: 3em;
+}
+
+div.search-engine {
+  div.search-engine-input {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    background: $WHITE_0;
+    padding: 0.75em 10px;
+    cursor: text;
+
+    svg {
+      width: 17px;
+      margin-left: 5px;
+      margin-right: 10px;
+      vertical-align: middle;
+      stroke: $GREY_5;
+    }
+
+    input[type=text] {
+      font: inherit;
+      font-weight: 300;
+      font-size: 0.8em;
+      outline: 0;
+      border: none;
+      color: $GREY_5;
+      margin-right: 5px;
+      width: calc(100% - 50px);
+    }
+
+    input[type=text]::placeholder {
+      color: $GREY_2;
+      font:inherit;
+    }
+  }
+
+  ul.search-result {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.8em;
+
+    li {
+      background: $WHITE_0;
+      padding: 0.8em;
+      cursor: pointer;
+      border-left: 1px solid $GREY_1;
+      border-right: 1px solid $GREY_1;
+
+      &:first-child {
+        border-top: 1px solid $GREY_1;
+      }
+
+      &:last-child {
+        border-bottom: 1px solid $GREY_1;
+      }
+
+      &:hover {
+        background-color: $WHITE_1;
+      }
+
+      &:focus {
+        background-color: $WHITE_1;
+        outline: 0;
+      }
+
+      img {
+        display: inline-block;
+        vertical-align: middle;
+        width: 2em;
+        height: 2em;
+      }
+
+      span.search-result-name {
+        font-weight: 400;
+        margin-left: 1em;
+      }
+
+      span.search-result-metadata {
+        font-weight: 300;
+        margin-left: 1em;
+      }
+    }
+  }
+}
 
 input[type=checkbox].ui-switch {
   @include form_element_reset();

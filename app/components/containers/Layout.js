@@ -2,7 +2,7 @@ import React from 'react';
 import Responsive from 'react-responsive-decorator';
 
 import Logo from '../Logo';
-import CompanySearch from '../CompanySearch';
+import MainContainer from './MainContainer';
 
 const SCREEN_SIZE_THRESHOLD = 768;
 
@@ -29,9 +29,7 @@ class Layout extends React.Component {
         <aside>
           <nav></nav>
         </aside>
-        <section>
-          <CompanySearch />
-        </section>
+        <MainContainer />
       </div>
     );
   }

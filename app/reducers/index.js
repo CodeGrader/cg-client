@@ -1,5 +1,5 @@
 import Reducer from '../../utils/wrappers/redux/Reducer';
-import ToolBoxReducer from './ToolBoxReducer';
+import SearchEngineReducer from './SearchEngineReducer';
 
-const reducers = new Reducer({ ToolBoxReducer });
+const reducers = new Reducer({ SearchEngineReducer });
 export default reducers;

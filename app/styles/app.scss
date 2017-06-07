@@ -13,6 +13,10 @@
     @include show();
     width: adjust_aside_width($device);
   }
+
+  #main-container {
+    margin-left: adjust_aside_width($device) + $BORDER_WIDTH;
+  }
 }
 
 // tablets
@@ -27,6 +31,10 @@
   aside {
     @include show();
     width: adjust_aside_width($device);
+  }
+
+  #main-container {
+    margin-left: adjust_aside_width($device) + $BORDER_WIDTH;
   }
 }
 
@@ -43,5 +51,9 @@
   aside {
     @include hide();
     width: 100%;
+  }
+
+  #main-container {
+    margin-left: adjust_aside_width($device) + $BORDER_WIDTH;
   }
 }

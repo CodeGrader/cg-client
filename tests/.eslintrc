@@ -1,12 +1,15 @@
 {
   "globals": {
+    "jest": false,
     "describe" : false,
     "it": false,
     "xit": false,
     "before": false,
     "beforeEach": false,
+    "beforeAll": false,
     "after": false,
     "afterEach": false,
+    "afterAll": false,
     "expect": false,
   }
 }

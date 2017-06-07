@@ -32,7 +32,7 @@ const Switch = (props) => {
   }
 
   if (!isUndefined(attributes.size)) {
-    attributes.style = isObject(attributes.style) ? attributes.style || {} : {};
+    attributes.style = isObject(attributes.style) ? attributes.style : {};
     attributes.style.fontSize = parseInt(attributes.size);
     if (!isInteger(attributes.style.fontSize)) {
       delete attributes.style.fontSize;
