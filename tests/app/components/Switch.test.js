@@ -4,6 +4,13 @@ import { shallow } from 'enzyme';
 import Switch from '../../../app/components/Switch';
 
 describe('<Switch />', () => {
+  describe('#shouldComponentUpdate()', () => {
+    it('should return false', () => {
+      const wrapper = shallow(<Switch/>);
+      expect(wrapper.instance().shouldComponentUpdate()).toBe(false);
+    });
+  });
+
   describe('#render()', () => {
     it('should render <input type="checkbox" class="ui-switch"/> as default', () => {
       const wrapper = shallow(<Switch/>);

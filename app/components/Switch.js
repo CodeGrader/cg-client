@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import TypeChecker from '../../utils/TypeChecker';
 
@@ -15,32 +16,56 @@ const { isString, isInteger, isUndefined, isObject } = TypeChecker;
  *   - when font-size is (n*20) pixels, the padding size should be n pixels
  *   - when font-size is (n*20) pixels, the width is (n*20)*2 pixels and the height is (n*20) pixels
  */
-const Switch = (props) => {
-  props.className = isString(props.className) ? props.className.trim() : '';
 
-  const attributes = {
-    ...props,
-    type: 'checkbox',
-    className: `ui-switch ${props.className}`.trim(),
-  };
-
-  if (!isUndefined(attributes.checked)) {
-    if (isUndefined(attributes.defaultChecked)) {
-      attributes.defaultChecked = attributes.checked;
-    }
-    delete attributes.checked;
+class Switch extends React.Component {
+  constructor(props) {
+    super();
+    this.init(props);
   }
 
-  if (!isUndefined(attributes.size)) {
-    attributes.style = isObject(attributes.style) ? attributes.style : {};
-    attributes.style.fontSize = parseInt(attributes.size);
-    if (!isInteger(attributes.style.fontSize)) {
-      delete attributes.style.fontSize;
+  init(props) {
+    const className = isString(props.className) ? props.className.trim() : '';
+
+    const attributes = {
+      ...props,
+      type: 'checkbox',
+      className: `ui-switch ${className}`.trim(),
+    };
+
+    if (!isUndefined(attributes.checked)) {
+      if (isUndefined(attributes.defaultChecked)) {
+        attributes.defaultChecked = attributes.checked;
+      }
+      delete attributes.checked;
     }
-    delete attributes.size;
+
+    if (!isUndefined(attributes.size)) {
+      attributes.style = isObject(attributes.style) ? attributes.style : {};
+      attributes.style.fontSize = parseInt(attributes.size);
+      if (!isInteger(attributes.style.fontSize)) {
+        delete attributes.style.fontSize;
+      }
+      delete attributes.size;
+    }
+
+    this.attributes = attributes;
   }
 
-  return (<input {...attributes} />);
+  shouldComponentUpdate() {
+    return false;
+  }
+
+  render() {
+    return (<input {...this.attributes} />);
+  }
+}
+
+Switch.propTypes = {
+  className: PropTypes.string,
+  checked: PropTypes.bool,
+  defaultChecked: PropTypes.bool,
+  size: PropTypes.number,
+  style: PropTypes.object,
 };
 
 export default Switch;
