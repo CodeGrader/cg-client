@@ -1,0 +1,31 @@
+[{
+  "name": "Google",
+  "logo": "https://media.glassdoor.com/sql/9079/google-squarelogo-1441130773284.png",
+  "location": {
+    "text": "Mountain View, CA"
+  }
+}, {
+  "name": "Facebook",
+  "logo": "https://media.glassdoor.com/sql/40772/facebook-squarelogo-1381810479272.png",
+  "location": {
+    "text": "Menlo Park, CA"
+  }
+}, {
+  "name": "Apple",
+  "logo": "https://media.glassdoor.com/sql/1138/apple-squarelogo-1485292862952.png",
+  "location": {
+    "text": "Cupertino, CA"
+  }
+}, {
+  "name": "Amazon",
+  "logo": "https://media.glassdoor.com/sql/6036/amazon-com-squarelogo-1432805660196.png",
+  "location": {
+    "text": "Seattle, WA"
+  }
+}, {
+  "name": "Microsoft",
+  "logo": "https://media.glassdoor.com/sql/1651/microsoft-squarelogo-1479856042252.png",
+  "location": {
+    "text": "Redmond, WA"
+  }
+}]

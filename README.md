@@ -75,6 +75,7 @@ For development stage, the code will be compiled during runtime when typing `npm
 For production stage, the code needs to be compiled prior to runtime by typing `npm run compile`.
 
 ## Other Tools
+* [PropTypes](https://facebook.github.io/react/docs/typechecking-with-proptypes.html) - type checker for React component prop values
 * [Chart.js](http://www.chartjs.org/) - simple and easy-to-use data visualization tool
 * [Lodash](https://lodash.com/) - collection of Javascript functions and utilities
 * [Request](https://github.com/request/request) - simple HTTP request tool

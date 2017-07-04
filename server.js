@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies, global-require */
 const express = require('express');
 const { each: parallel } = require('async');
-const fetch = require('node-fetch');
+const request = require('request-promise');
 const fs = require('fs');
 const config = require('./utils/Configuration');
 
@@ -49,27 +49,33 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/*', async (req, res) => {
-  const { method, body, originalUrl, params } = req;
+  const { method, body, params } = req;
 
   if (config.get('USE_STUB')) {
-    const filename = `./utils/stubs/${params[0]}/${method}.json`;
+    const filename = `${__dirname}/utils/stubs/${Object.values(params).join('/')}/${method.toUpperCase()}.json`;
     fs.readFile(filename, (error, data) => {
-      if (error) {
-        res.status(404).send({ error: 'No Stub Found' });
-        return;
-      }
+      const result = {};
       try {
-        res.status(200).send(JSON.parse(data));
-      } catch (err) {
-        res.status(500).send({ error: 'Invalid Stub Format' });
+        if (error) {
+          result.status = 404;
+          result.data = { error: 'No Stub Found' };
+        } else {
+          result.status = 200;
+          result.data = JSON.parse(data);
+        }
+      } catch (e) {
+        result.status = 500;
+        result.data = { error: 'Invalid Stub Format' };
+      } finally {
+        res.status(result.status).json(result.data);
       }
     });
   } else {
+    const uri = `${config.get('API') || 'http://localhost:8080'}/${Object.values(params).join('/')}`;
+    const options = { method, uri, body, json: true };
     try {
-      const url = `${config.get('API') || 'http://localhost:8080/'}${originalUrl.slice(4)}`;
-      const response = await fetch(url, { method, body });
-      const data = await response.json();
-      res.status(response.status).send(data);
+      const data = await request(options);
+      res.json(data);
     } catch (error) {
       res.status(500).send({ error });
     }
@@ -77,7 +83,7 @@ app.use('/api/*', async (req, res) => {
 });
 
 if (NODE_ENV === 'development') {
-  app.get('/eyecatch', (req, res) => {
+  app.get('/_eyecatch', (req, res) => {
     res.sendFile(`${__dirname}/static/eyecatch.html`);
   });
 }

@@ -33,6 +33,9 @@ const config = {
       test: /\.scss$/,
       loader: ExtractTextPlugin.extract('style', 'css!postcss!sass'),
       exclude: /(node_modules|bower_components)/,
+    }, {
+      test: /\.json$/,
+      loader: 'json',
     }],
   },
   postcss: () => [precss, autoprefixer],
@@ -56,6 +59,7 @@ if (process.argv.includes('--analyze')) {
 }
 
 if (NODE_ENV !== '"development"') {
+  config.devtool = 'source-map';
   config.plugins.push(
     new OccurrenceOrderPlugin(),
     new DedupePlugin({ IN_BROWSER: true }),

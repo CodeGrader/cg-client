@@ -1,13 +1,20 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+
+import store from './store';
 
 import Switch from './components/Switch';
+import SearchEngine from './components/SearchEngine'; // eslint-disable-line import/no-named-as-default
 
 import './styles/app.scss';
 
 const Root = () => (
-  <div style={{ marginLeft: 35 }}>
-    <div>
+  <div>
+    <Provider store={store}>
+      <SearchEngine endpoint='/companies' />
+    </Provider>
+    <div style={{ marginLeft: 35 }}>
       <h1>Switches</h1>
 
       <h5>default (checked=false, size=default font-size)</h5>
