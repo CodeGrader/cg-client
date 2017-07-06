@@ -206,3 +206,34 @@ input[type=checkbox].ui-switch:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+figure.ui-chip {
+  font-size: 0.75em;
+  display: inline-block;
+  margin: 0;
+  padding: 0 1em;
+  height: 2em;
+  line-height: 2em;
+  border-radius: 1em;
+  color: $TEXT_REGULAR_COLOR;
+  background-color: $GREY_1;
+  user-select: none;
+
+  figcaption.ui-chip-label {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+  }
+
+  svg.ui-chip-remove {
+    vertical-align: middle;
+    cursor: pointer;
+    margin-top: -0.25em;
+    margin-left: 0.5em;
+    margin-right: -0.25em;
+    width: 1em;
+    height: 1em;
+    stroke: $TEXT_REGULAR_COLOR;
+  }
+}
