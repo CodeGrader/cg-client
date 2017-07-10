@@ -6,11 +6,8 @@ export class Hangman extends React.Component {
 
     this.alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
-    // let categories;         // Array of topics
-    // let chosenCategory;     // Selected category
-    // let getHint;          // Word getHint
     // let word;              // Selected word
-    // let guess;             // Geuss
+    // let guess;             // Guess
     // let guesses = [];      // Stored guesses
     // let lives;             // Lives
     // let counter;           // Count correct guesses
@@ -33,18 +30,6 @@ export class Hangman extends React.Component {
 //       check();
 //       myButtons.appendChild(letters);
 //       letters.appendChild(list);
-//     }
-//   };
-//
-//
-//   // Select Category
-//   const selectCat = function() {
-//     if (chosenCategory === categories[0]) {
-//       categoryName.innerHTML = "The Chosen Category Is Premier League Football Teams";
-//     } else if (chosenCategory === categories[1]) {
-//       categoryName.innerHTML = "The Chosen Category Is Films";
-//     } else if (chosenCategory === categories[2]) {
-//       categoryName.innerHTML = "The Chosen Category Is Cities";
 //     }
 //   };
 //
@@ -145,9 +130,7 @@ export class Hangman extends React.Component {
 
   render() {
     return (
-      <div class="wrapper">
-        <h1>Hangman</h1>
-        <p>Use the alphabet below to guess the word, or click hint to get a clue. </p>
+      <div>
         <div id="buttons"></div>
           <p id="categoryName"></p>
           <div id="hold"></div>
