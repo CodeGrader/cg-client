@@ -206,3 +206,15 @@ input[type=checkbox].ui-switch:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.error-title {
+  padding-top: 2em;
+  text-align: center;
+}
+
+.error-img {
+  display: block;
+  margin: 0 auto;
+  width: 30%;
+  height: 30%;
+}

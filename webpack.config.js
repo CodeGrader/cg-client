@@ -36,6 +36,12 @@ const config = {
     }, {
       test: /\.json$/,
       loader: 'json',
+    }, {
+      test: /\.(jpg|png|svg)$/,
+      loader: 'url-loader',
+      options: {
+        limit: 25000,
+      },
     }],
   },
   postcss: () => [precss, autoprefixer],

@@ -1,11 +1,10 @@
+/* eslint-disable global-require */
 import React from 'react';
-// import Hangman from '../Hangman';
 
 const HTTPError = ({ code }) => (
   <div>
-    <h1>Error {code}</h1>
-    <h2>Hangman</h2>
-    <p>Use the alphabet below to guess the word, or click hint to get a clue.</p>
+    <h1 className="error-title">Error {code} </h1>
+    <img src={require('../../../static/media/images/empty_box.svg')} className="error-img"/>
   </div>
 );
 
