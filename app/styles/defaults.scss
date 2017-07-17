@@ -206,3 +206,46 @@ input[type=checkbox].ui-switch:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.error-title {
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.error-img-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  text-align:center; /* Align center inline elements */
+  font: 0/0 a;
+}
+
+.error-img-container:before {
+  content: ' ';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+.error-img-container img {
+  vertical-align: middle;
+  display: inline-block;
+  width: 50%;
+  height: 50%;
+}
+
+.error-credit {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.5em;
+}
